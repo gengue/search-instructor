@@ -55,4 +55,5 @@ node_modules/
 
 # virtual environments
 .env
+/env
 env/
