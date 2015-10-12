@@ -57,7 +57,9 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'courses',
     'users',  # custom users app
+    'lessons',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

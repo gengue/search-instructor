@@ -3,15 +3,24 @@ from __future__ import absolute_import, unicode_literals
 
 from rest_framework import serializers
 from .models import User
+from versatileimagefield.serializers import VersatileImageFieldSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
+    avatar = VersatileImageFieldSerializer(
+        sizes=[
+            ('full_size', 'url'),
+            ('thumbnail', 'thumbnail__100x100'),
+            ('medium_square_crop', 'crop__400x400'),
+            ('small_square_crop', 'crop__50x50')
+        ]
+    )
 
     class Meta:
         model = User
         fields = (
                 'id', 'username', 'auth_token', 'email', 'first_name', 'last_name',
-                'is_active', 'is_staff', 'is_superuser', 'date_joined',
+                'is_active', 'is_staff', 'is_superuser', 'date_joined', 'avatar',
         )
         read_only_fields = ('username', 'auth_token', 'date_joined',)
 
